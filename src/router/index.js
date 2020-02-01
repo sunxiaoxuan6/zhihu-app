@@ -11,6 +11,8 @@ import Hot from '../views/Hot.vue'
 import QuestionWaiting from '../views/QuestionWaiting.vue'
 import Login from '../views/Login.vue'
 import Favorite from '../views/Favorite.vue'
+import Password from '../views/Password.vue'
+import PasswordFree from '../views/PasswordFree.vue'
 
 Vue.use(VueRouter)
 
@@ -78,7 +80,20 @@ const routes = [
   {
 	  // 登录
     path: '/login',
-    component: Login
+    component: Login,
+	children:[
+		
+		{
+			// 关注
+			path:'passwordfree',
+			component: () => import('../views/PasswordFree.vue')
+		},
+		{
+			// 热榜
+			path:'password',
+			component: () => import('../views/Password.vue')
+		}
+	]
   }
 ]
 
